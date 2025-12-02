@@ -25,6 +25,7 @@ public class Damage_animation : MonoBehaviour
 
         GameObject[] boxes1 = GameObject.FindGameObjectsWithTag("Box");
         GameObject[] boxes2 = GameObject.FindGameObjectsWithTag("Box2");
+        GameObject[] BigBox = GameObject.FindGameObjectsWithTag("BigBox");
 
         foreach (var box in boxes1)
         {
@@ -35,6 +36,12 @@ public class Damage_animation : MonoBehaviour
         foreach (var box in boxes2)
         {
             StartCoroutine(PushRight(box));
+            StartCoroutine(CollisionDisapear(box));
+        }
+
+        foreach (var box in BigBox)
+        {
+            StartCoroutine(PushUp(box));
             StartCoroutine(CollisionDisapear(box));
         }
 
