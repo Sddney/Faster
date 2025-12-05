@@ -52,7 +52,7 @@ public class player2_movement : MonoBehaviour
 
     private IEnumerator Scale_Return()
     {
-        yield return new WaitForSecondsRealtime(0.7f);
+        yield return new WaitForSecondsRealtime(1f);
         transform.localScale = new Vector2(5.69f, 5.69f);
         if (coll is BoxCollider2D boxCollider)
         {

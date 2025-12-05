@@ -58,7 +58,7 @@ public class Running_background2 : MonoBehaviour
                 hasSpawned[i] = true;
                 spawningNext = true;
             }
-            if (rb.transform.position.y < -10f)
+            if (rb.transform.position.y < -12f)
             {
                 Destroy(rb.gameObject);
                 rb_list.RemoveAt(i);

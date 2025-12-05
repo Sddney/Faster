@@ -8,9 +8,9 @@ public class diologue_call : MonoBehaviour
     public pause_menu pause_menu;
     public TextMeshProUGUI EText;
     private List<string> diologue_list = new List<string>();
-    private string text1 = "Press Space";
-    private string text2 = "!!!";
-    private string text3 = "Yesss";
+    private string text1 = "Can't get through ?";
+    private string text2 = "Switch your view !!!";
+    private string text3 = "To do so - Press E";
     private bool first_time = true;
     private bool isDiologueActive = false;
     private int currentDiologueIndex = 0;

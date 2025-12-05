@@ -12,7 +12,7 @@ public class counter1 : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "BigBox")
+        if (other.gameObject.tag == "Box")
         {
             point = true;
         }

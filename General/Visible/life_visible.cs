@@ -14,6 +14,6 @@ public class life_visible : MonoBehaviour
 
     void Update()
     {
-        EText.text = "Life: " + life_counter.life.ToString();
+        EText.text = life_counter.life.ToString();
     }
 }

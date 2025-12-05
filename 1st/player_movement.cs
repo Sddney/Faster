@@ -22,9 +22,9 @@ public class player_movement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        player1_positions[0] = new Vector3(-2f, -2.65f, 0);
-        player1_positions[1] = new Vector3(0, -2.65f, 0);
-        player1_positions[2] = new Vector3(2f, -2.65f, 0);
+        player1_positions[0] = new Vector3(-2f, -4.65f, 0);
+        player1_positions[1] = new Vector3(0, -4.65f, 0);
+        player1_positions[2] = new Vector3(2f, -4.65f, 0);
     }
 
 

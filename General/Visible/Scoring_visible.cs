@@ -14,6 +14,6 @@ public class Scoring_visible : MonoBehaviour
     
     void Update()
     {
-        EText.text = counter.count.ToString();
+        EText.text = "Score\n"+counter.count.ToString();
     }
 }

@@ -21,6 +21,11 @@ public class boxSpawner2 : MonoBehaviour
 
     public bool box_destroyed_x = true;
 
+    private bool top_box_spawned = false;
+
+    public GameObject S_key;
+    public GameObject player;
+
     void Start()
     {
         small_box_spawn_pos = new Vector3(-12, -1, 0);
@@ -33,7 +38,7 @@ public class boxSpawner2 : MonoBehaviour
 
     private void spawn_small_copy() 
     {
-            GameObject smallBox = Instantiate(box_pref, small_box_spawn_pos, Quaternion.identity);
+            GameObject smallBox = Instantiate(box_pref, big_box_spawn_pos[0], Quaternion.identity);
             Rigidbody2D rb = smallBox.GetComponent<Rigidbody2D>();
             rb.gravityScale = 0;
             rb.linearVelocity = Vector2.left * speed;
@@ -44,6 +49,13 @@ public class boxSpawner2 : MonoBehaviour
         }
         db.spawner2 = box_cp;
 
+    }
+
+    private IEnumerator<WaitForSeconds> S_show()
+    {
+        S_key.SetActive(true);
+        yield return new WaitForSeconds(7f);
+        S_key.SetActive(false);
     }
 
     private void spawn_big_copy()
@@ -83,6 +95,11 @@ public class boxSpawner2 : MonoBehaviour
         {
             random = Random.Range(0, 2);
             spawn_big_copy();
+            if (random == 1 && !top_box_spawned)
+            {
+                StartCoroutine(S_show());
+                top_box_spawned = true;
+            }
             box_cp.big_box = false;
 
         }
