@@ -22,6 +22,8 @@ public class switchCamera : MonoBehaviour
 
     public player2_movement player2_movement;
 
+    public AudioClip switchingSound;
+
 
         void Start()
     {
@@ -39,6 +41,8 @@ public class switchCamera : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E) && camera_switching)
         {
+            AudioControl.instance.PlaySound(switchingSound, transform, 0.2f);
+
             if (cam1.activeSelf)
             {
                 counter1.SetActive(false);

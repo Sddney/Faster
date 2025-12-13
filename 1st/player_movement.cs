@@ -17,6 +17,10 @@ public class player_movement : MonoBehaviour
     public bool moving = false;
 
     public float position_count = 1;
+
+    public AudioClip moveSound;
+
+    public AudioClip startSound;
     
 
     void Start()
@@ -25,6 +29,7 @@ public class player_movement : MonoBehaviour
         player1_positions[0] = new Vector3(-2f, -4.65f, 0);
         player1_positions[1] = new Vector3(0, -4.65f, 0);
         player1_positions[2] = new Vector3(2f, -4.65f, 0);
+        AudioControl.instance.PlaySound(startSound, transform, 0.5f);
     }
 
 
@@ -32,10 +37,13 @@ public class player_movement : MonoBehaviour
     {
         movement.x = Input.GetAxisRaw("Horizontal");
         transform.position = Vector3.SmoothDamp(transform.position, player1_positions[(int)position_count], ref velocity, speed_decrease, speed);
+
+
         if (movement.x != 0 && moving == false)
         {
             position_count += movement.x;
             moving = true;
+            AudioControl.instance.PlaySound(moveSound, transform, 1f);
         }
         else if (movement.x == 0)
         {

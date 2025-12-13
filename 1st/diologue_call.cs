@@ -11,7 +11,7 @@ public class diologue_call : MonoBehaviour
     private string text1 = "Can't get through ?";
     private string text2 = "Switch your view !!!";
     private string text3 = "To do so - Press E";
-    private bool first_time = true;
+    public bool first_time = true;
     private bool isDiologueActive = false;
     private int currentDiologueIndex = 0;
 
@@ -21,6 +21,7 @@ public class diologue_call : MonoBehaviour
         diologue_list.Add(text2);
         diologue_list.Add(text3);
         diologue.SetActive(false);
+        first_time = PlayerPrefs.GetInt("HasDiologueCalled", 0) == 0;
     }
 
     private void StartDiologue()
@@ -53,9 +54,13 @@ public class diologue_call : MonoBehaviour
 
     void Update()
     {
+        
         if (life.hasCalled && first_time)
         {
             StartDiologue();
+            first_time = false;
+            PlayerPrefs.SetInt("HasDiologueCalled", 1);
+            PlayerPrefs.Save();
         }
         if (isDiologueActive)
         {

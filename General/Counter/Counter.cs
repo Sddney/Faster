@@ -3,7 +3,7 @@ using UnityEngine;
 public class Counter : MonoBehaviour
 {
 
-    public int count = 0;
+    public static int count = 0;
 
     public counter1 counter1;
 
@@ -13,6 +13,7 @@ public class Counter : MonoBehaviour
 
     void Start()
     {
+        count = 0;
 
     }
     
@@ -25,6 +26,12 @@ public class Counter : MonoBehaviour
             count += 1;
             counter1.point = false;
             counter2.point = false;
+            
+            if (count > PlayerPrefs.GetInt("HighestScore", 0))
+            {
+                PlayerPrefs.SetInt("HighestScore", count);
+            }
+
             if (life.damage_taken)
             {
                 count -= 1;

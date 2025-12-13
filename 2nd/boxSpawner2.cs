@@ -15,7 +15,7 @@ public class boxSpawner2 : MonoBehaviour
 
     public List<Rigidbody2D> spawnedBoxes = new List<Rigidbody2D>();
 
-    public float speed = 10f;
+    public float speed = 8f;
 
     private int random;
 
@@ -75,8 +75,9 @@ public class boxSpawner2 : MonoBehaviour
     }
 
 
-    void Update()
+    void FixedUpdate()
     {
+        speed = speed + 0.0005f;
         foreach (Rigidbody2D rb in spawnedBoxes)
         {
             if (rb != null)

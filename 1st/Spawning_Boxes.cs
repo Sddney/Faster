@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public class Spawning_Boxes : MonoBehaviour
 {
-    public float speed = 2f;
+    public float speed = 5f;
     public GameObject boxes;
     public GameObject bigBoxes;
     public float spawnInterval = 10f;
@@ -29,6 +29,7 @@ public class Spawning_Boxes : MonoBehaviour
 
     void FixedUpdate()
     {
+        speed = speed + 0.0005f;
         if (spawner)
         {
             foreach (Rigidbody2D rb in spawnedBoxes)

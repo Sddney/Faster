@@ -26,6 +26,10 @@ public class player2_movement : MonoBehaviour
 
     private int jumping_counter = 0;
 
+    public AudioClip jumpSound;
+    public AudioClip downSound;
+    public AudioClip crouchSound;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -68,6 +72,7 @@ public class player2_movement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             isJumping = true;
+            AudioControl.instance.PlaySound(jumpSound, transform, 1f);
             if (jumping_counter < 2)
             {
                 rb.AddForce(Vector2.up * height, ForceMode2D.Impulse);
@@ -86,11 +91,13 @@ public class player2_movement : MonoBehaviour
             if (!isGrounded)
             {
                 rb.AddForce(Vector2.down * height, ForceMode2D.Impulse);
+                AudioControl.instance.PlaySound(downSound, transform, 1f);
                 Debug.Log("Down");
             }
             else if (isGrounded && !isCrouching)
             {
                 isCrouching = true;
+                AudioControl.instance.PlaySound(crouchSound, transform, 1f);
                 
                 if (coll is BoxCollider2D boxCollider)
                 {

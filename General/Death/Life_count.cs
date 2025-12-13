@@ -11,6 +11,8 @@ public class Life_count : MonoBehaviour
 
     public bool damage_taken = false;
 
+    public AudioClip DamageSound;
+
     private IEnumerator wait()
     {
         yield return new WaitForSeconds(1f);
@@ -20,6 +22,7 @@ public class Life_count : MonoBehaviour
     {
         if (player1_obs_faced.obstacle_faced || player2_obs_faced.obstacle2_faced)
         {
+            AudioControl.instance.PlaySound(DamageSound, transform, 1f);
             life -= 1;
             damage_taken = true;
             StartCoroutine(wait());
